@@ -6,8 +6,10 @@
 <br/>
 <img src="https://www.devkuma.com/docs/java/jvm/java_compile_jvm.png" width="100%" />
 - 실행 절차: *.java 파일 생성 → compiler: *.java → *.class 파일인 Byte code로 Compile → JVM: Byte Code → 기계어인 Binary Code로 변환 → CPU에서 실행되어 사용자에게 제공
+
 <br/>
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcgGf08%2Fbtrup9tFZNc%2FdfbotBKGFrZ4mDGIYrNj10%2Fimg.png" width="100%" />
+
 - 다중 상속이나 타입이 엄격
 
 <br />
@@ -24,16 +26,19 @@
 <br/>
 
 ### 객체지향프로그래밍(Object Oriented Programming)
-- 컴퓨터 프로그램을 어떤 데이터를 입력받아 순서대로 처리하고 결과를 도출하는 명령어들의 목록으로 보는 시각에서 벗어나 여러 독립적인 부품들의 조합, 즉 객체들의 유기적인 협력과 결합으로 파악하고자 하는 컴퓨터 프로그래밍의 패러다임
-    - 프로그램을 보다 유연하고 변경이 용이하게 만들 수 있음 → 코드의 변경을 최소화하고 유지보수를 하는 데 유리
-    - 추상화(Abstraction), 상속(Inheritance), 다형성(Polymorphism), 캡슐화(Encapsulation)
+- 애플리케이션을 구성하는 요소들을 객체로 바라보고, 객체들을 유기적으로 연결하여 프로그래밍 하는 것
+    - 프로그램을 보다 유연하고 변경에 용이하게 만들 수 있음 → 유지보수에 유리
+    - 특징
+        - 추상화(Abstraction)
+        - 상속(Inheritance)
+        - 다형성(Polymorphism)
+        - 캡슐화(Encapsulation)
 
 <br/>
 
 ### Abstraction
-- 사물이나 표상을 어떤 성질, 공통성, 본질에 착안하여 그것을 추출하여 파악하는 것
-    - Abstract Class: 클래스 내 추상 메소드가 하나 이상 포함되거나 abstract로 정의된 경우
-    - Interface: 모든 메소드가 추상 메소드로만 이루어져 있는 경우
+- Abstract Class: 클래스 내 추상 메소드가 하나 이상 포함되거나 abstract로 정의된 경우
+- Interface: 모든 메소드가 추상 메소드로만 이루어져 있는 경우
     - 공통점:
         - new 연산자를 통한 객체 생성 불가능
         - 하위 클래스에서 확장/구현 해야 사용 가능
@@ -44,14 +49,14 @@
 <br/>
 
 ### Inheritance
-- 기존의 클래스를 재활용하여 새로운 클래스를 작성하는 자바의 문법 요소
+- 기존의 클래스를 재활용하여 새로운 클래스를 작성
     - Overriding: 상위 클래스에 있는 메소드를 하위 클래스에서 재정의하는 것
     - Overloading: 매개변수의 개수나 타입을 다르게 하여 같은 이름의 메소드를 여러 개 정의하는 것
 
 <br/>
 
 ### Polymorphism
-- 상위 클래스 타입의 참조 변수로 그것과 관계있는 하위 클래스들을 참조할 수 있는 것 ▶ 객체들 간의 결합도를 낮출 수 있음
+- 상위 클래스 타입의 참조 변수로 그것과 관계있는 하위 클래스들을 참조할 수 있는 것
 <br/>
 <img src="https://i0.wp.com/blog.codestates.com/wp-content/uploads/2022/11/%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%A0%81%EC%9A%A9-%EC%A0%84%E3%85%81.png?resize=1024%2C841&ssl=1" width="100%" />
 <img src="https://i0.wp.com/blog.codestates.com/wp-content/uploads/2022/11/%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EC%A0%81%EC%9A%A9-%ED%9B%84.png?resize=1024%2C294&ssl=1" width="100%" />

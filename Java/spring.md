@@ -1,9 +1,5 @@
 # Java & Spring
 
-### Spring
-
-스프링 프레임워크란
-
 ### Spring, Spring MVC, Spring Boot의 차이
 Spring
 * 자바의 오픈 소스 애플리케이션 프레임워크

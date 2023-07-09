@@ -90,5 +90,5 @@ String은 수정이 불가하므로 수정이 필요할 경우, StringBuffer 또
 비동기 처리방식은 StringBuilder와 달리 StringBuffer는 동기 처리 방식을 사용하므로 multiple thread 환경에서 안전합니다.
 
 ### [Q] '=='와 'equals()'의 차이
-`==`는 참조 비교 방식으로 같은 주소를 가르키고 있는지 확인합니다. 모든 기본 유형(Primitive Types)에 대해 적용할 수 있습니다.
+`==`는 참조 비교 방식으로 같은 주소를 가리키고 있는지 확인합니다. 모든 기본 유형(Primitive Types)에 대해 적용할 수 있습니다.
 `equals()`는 내용 비교 방식으로 두 객체의 값이 같은지 확인합니다. 이는 기본 유형(Primitive Types)에 대해서는 적용할 수 없습니다.

@@ -65,7 +65,7 @@
 <br/>
 
 ### Encapsulation
-- 클래스 안에 서로 연관있는 속성과 기능들을 하나의 캡슐(capsule)로 만들어 데이터를 외부로부터 보호하는 것
+- 객체의 속성과 행위를 하나로 묶고, 실제 구현 내용 일부를 내부에 감추어 은닉하는 것
     - 접근제어자
     <img src="https://i0.wp.com/blog.codestates.com/wp-content/uploads/2022/11/%EC%9E%90%EB%B0%94-%EC%A0%91%EA%B7%BC%EC%A0%9C%EC%96%B4%EC%9E%90-%ED%91%9C.png?resize=1024%2C334&ssl=1" width="100%" />
     - Getter/Setter: 속성값을 private으로 선언하여 외부의 직접적인 접근을 제어하고, getter/setter 메서드는 public으로 선언하여 선택적으로 외부 접근을 제어함
@@ -75,18 +75,21 @@
     <img src="https://i0.wp.com/blog.codestates.com/wp-content/uploads/2022/11/%EA%B0%9D%EC%B2%B4-%EC%A7%80%ED%96%A5-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B2%84-%ED%81%B4%EB%9E%98%EC%8A%A4-1.png?resize=1024%2C594&ssl=1" width="100%" />
     ＊ 기존: Driver 클래스가 Car 클래스의 내부 메서드를 직접 호출함으로써, 객체간의 결합도가 높아짐(= Car 클래스의 변경이 Driver 클래스의 결함을 유발할 수 있음)
     <br/>
-    ＊ → 캡슐화: Car 클래스와 관련된 기능들은 온전히 Car 에서만 관리되도록 하였고, 불필요한 내부 동작의 노출을 최소화하여 객체지향 프로그래밍 실현
+    ＊ → 캡슐화: Car 클래스와 관련된 기능들은 온전히 Car 에서만 관리되도록 하였고, <b>불필요한 내부 동작의 노출을 최소화</b>하여 객체지향 프로그래밍 실현
 
 <br/>
 
 ### static
 - 인스턴스(객체) 생성 없이 바로 사용 가능
-- 자주 변하지 않는 값이나 공통으로 사용되는 값에 대해 매번 메모리에 로딩하거나 값을 읽어들이는 것보다 일종의 '전역변수'와 같은 개념을 통해 접근하는 것이 비용도 줄이고 효율을 높일 수 있음
+- 처음 JVM이 실행되어 클래스가 메모리에 올라갈 때 ~ 프로그램이 종료될 때까지 유지
+- 클래스가 여러 번 생성되어도 Static 변수는 처음 딱 한 번만 생성됨 ◀ 자주 변하지 않는 값이나 공통으로 사용되는 값에 일종의 '전역변수'와 같은 개념을 통해 접근하는 것이 비용도 줄이고 효율을 높일 수 있음
 
 <br/>
 
 ### Error & Exception
-- Error: 실행 중 일어날 수 있는 치명적 오류, UncheckedException의 일종
+<img src="https://t1.daumcdn.net/cfile/tistory/996116375B30B71404?download" alt="error_exception" width="100%">
+
+- Error: 실행 중 일어날 수 있는 치명적 오류
 - Exception: 경미한 오류, try-catch를 이용해 프로그램의 비정상 종료를 막을 수 있음
     - CheckedException: 실행하기 전에 예측 가능한 예외, 반드시 예외 처리
     - UncheckedException: 실행하고 난 후에 알 수 있는 예외, 따로 예외처리를 하지 않음(예: RuntimeException)
@@ -111,4 +114,3 @@
 -  SerialVersionUID
     - JVM: 직렬화와 역직렬화를 하는 시점의 클래스에 대한 버전 번호를 부여
     - 직렬화할 때의 버전 번호와 역직렬화를 할 때의 버전 번호가 다르면 역직렬화가 불가능하게 될 수 있기 때문에 이런 문제를 해결하기 위해 SerialVersionUID를 사용
-

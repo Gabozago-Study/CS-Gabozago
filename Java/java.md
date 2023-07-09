@@ -171,6 +171,7 @@ StringBuilder, StringBuffer
   * 시간적인 동기화가 필요한 곳에 많이 사용
   * Java에서 synchronized 키워드 사용
       * 자바에서 멀티 스레드 접근 제한 키워드
+
 비동기화(Asyncronous)
   * 현재 실행 중인 명령이 종료되지 않아도 다음 명령 실행 가능
    * Callback 함수를 통해 결과 확인

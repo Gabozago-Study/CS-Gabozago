@@ -1,7 +1,7 @@
 # Spring
 
 ### POJO(Plain Old Java Object)
-- 외부의 종속성이 없는 단순한 자바 객체 프로그래밍 지향하는 프레임워크
+- Spring: 외부의 종속성이 없는 단순한 자바 객체 프로그래밍 지향하는 프레임워크
 - 다른 클래스나 인터페이스를 상속하지 않고 getter, setter와 같이 기본적인 기능만 가진 자바 객체
 
         public class example {

@@ -2,7 +2,7 @@
 
 ### HTTP(Hyper Text Transfer Protocol)
 - 데이터를 주고 받기 위한 프로토콜
-- 상태 정보를 저장하지 않는 Stateless 및 라이언트의 요청에 맞는 응답을 보낸 후 연결을 끊는 Connectionless 특징
+- 상태 정보를 저장하지 않는 Stateless 및 클라이언트의 요청에 맞는 응답을 보낸 후 연결을 끊는 Connectionless 특징
     - 연결 상태 처리나 상태 정보를 관리할 필요가 없어 서버 디자인이 간단
     - 통신의 정보를 모르기 때문에 매번 인증 필요 
         - 해결방안: 쿠키, 세션 등
@@ -17,7 +17,7 @@
 |DELETE|데이터 삭제|
 
 ### HTTP 상태 코드
-- 1xx : 정보 응답
+- 1xx : 처리가 진행 중
 - 2xx : 성공 응답
 - 3xx : 리다이렉트, 요청을 완료하려면 추가적인 작업(페이지 이동)이 필요
 - 4xx : 클라이언트 요청 오류
@@ -54,10 +54,10 @@
 
 ### 쿠키와 세션 차이
 - 쿠키
-    - 사용자의 컴퓨터에 저장하는 작은 기록 정보 파일
+    - 사용자의 컴퓨터에 저장하는 데이터 파일
     - 예: 팝업창을 통해 "오늘 이 창을 다시 보지 않기" 체크
 - 세션
-    - 일정 시간 동안 같은 사용자(브라우저)로부터 들어오는 일련의 요구를 하나의 상태로 보고, 그 상태를 유지시키는 기술
+    - 사용자(브라우저)로부터 들어오는 일련의 요구를 하나의 상태로 보고, 그 상태를 유지시키는 기술
     - 웹 서버의 저장되는 쿠키(=세션 쿠키)
     - 예: 화면을 이동해도 로그인이 풀리지 않고 로그아웃하기 전까지 유지
 
@@ -72,21 +72,24 @@
 <img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MjVfMTEg/MDAxNTU4Nzk0NTk1MDE5.lvPae_6FL3CLDXMcuuXNugZujgASiTx3b5uSUwnzPggg.TdBCmFZLyjIbn1u3xLlnL0OLGIT9noPjTGWG0lVsnLog.PNG.shino1025/994BEA345B53368401.png?type=w800" alt="session" width="100%">
 
 - 세션 기반 인증: 클라이언트로부터 요청을 받으면 해당 상태 정보를 저장하므로 Stateful한 구조
-    - 중요한 정보는 서버에 있기 때문에 세션 ID(쿠키)에는 유의미한 값을 가지고 있지 않음
+    - 중요한 정보는 서버에 있기 때문에 세션 ID 쿠키에는 유의미한 값을 가지고 있지 않음
     - 서버에 세션을 저장하기 때문에 사용자가 증가하면 서버에 과부하
-    - 세션 하이재킹: 훔친 쿠키를 이용해 요청을 보내면 서버는 올바른 사용자가 보낸 요청인지 알 수 없음
+    - 분산 서버 활용 시, 상태 유지가 올바르게 작동하지 않을 수 있음
+    - 세션 하이재킹: 훔친 세션 ID 쿠키를 이용해 요청을 보내면 서버는 올바른 사용자가 보낸 요청인지 알 수 없음
+    - 예: 넷플릭스 디바이스 로그인 개수 제한
 
 <img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MjVfNDMg/MDAxNTU4Nzk1NjQ3Nzg5.cz-5fOL_RPyifrETlD_Go9cuUmyCl8Jrl01uY_T5PgUg.FE9xhe58eOPiC_ZUucbewNUHAf35kj9cjo3qStzO5msg.PNG.shino1025/asdasd.png?type=w800
 " alt="session" width="100%">
 
 - 토큰 기반 인증: Access Token을 발급해준 후 요청이 들어오면 검증만 해주면 되기 때문에 추가 저장소가 필요 없는 Stateless한 구조
-    - 이미 발급된 JWT를 돌이킬 수 없으므로 유출 시, 만료전까지 피해가 계속 발생할 수 있음
+    - 이미 발급된 토큰을 돌이킬 수 없으므로 유출 시, 토큰 만료전까지 피해가 계속 발생할 수 있음
+    - (JWT에서의 대안) Refresh Token을 추가적으로 발급해서 Access 토큰의 사용기간을 단축
 
 ### JWT 토큰
 - 웹에서 사용되는 인증에 필요한 정보를 암호화시킨 JSON 형식의 토큰
 - JWT(JSON Web Token)의 구조
     - Header: 토큰의 타입과 Signature를 해싱하기 위한 암호화 알고리즘으로 구성
-    - Payload: 토큰에 사용자가 담고자 하는 정보를 담는 곳, JSON(Key/Value) 형태
+    - Payload: 토큰에 서비스에서 사용자에게 토큰을 통해 공개하기를 원하는 내용(= Claim), JSON(Key/Value) 형태
     - Signature: 토큰을 인코딩하거나 유효성 검증을 할 때 사용하는 고유한 암호화 코드
 
 ### 암호화 방식
@@ -100,10 +103,11 @@
         - 예시: 공인인증서
 
 ### 공인(public) IP와 사설(private) IP의 차이
-- 공인 IP: ISP(인터넷 서비스 공급자)가 제공하는 IP 주소
+<img src="https://file.okky.kr/images/1552834443613.png" alt="public_private_ip" width="100%">
+- 공인 IP: 중복되지 않는 단 1개의 IP 주소로 공유기가 인터넷과 통신하도록 하는 역할을 하는 외부 IP 주소
 - 사설 IP
     - 일반 가정이나 회사 내 등에 할당된 네트워크 IP 주소
-    - IPv4의 주소부족으로 인해 서브넷팅된 IP이기 때문에 라우터(공유기)에 의해 로컬 네트워크상의 PC나 장치에 할당
+    - 라우터(공유기)에 의해 로컬 네트워크상의 PC나 장치에 할당
 - 사설 IP 주소만으로는 인터넷에 직접 연결할 수 없고, 라우터를 통해 1개의 공인 IP를 할당하고, 라우터에 연결된 개인 PC는 사설 IP를 각각 할당 받아 인터넷에 접속
 
 ### OSI 7 Layer Model

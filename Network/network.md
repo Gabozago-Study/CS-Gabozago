@@ -177,7 +177,7 @@ POST
 REST
 * HTTP URI를 통해 자원을 명시하고, HTTP METHOD를 통해 자원에 대한 CRUD를 적용하는 것을 의미한다.
 * 자원(URI) + 행위(HTTP Method) + 표현
-  * 자원 : client는 URI를 이용해서 자원을 지정하고 해당 자원에 대한 조작을 server에 요청g
+  * 자원 : client는 URI를 이용해서 자원을 지정하고 해당 자원에 대한 조작을 server에 요청
   * 행위 : GET, POST, PUT, DELETE
   * 표현 : JSON, XML를 통해 데이터를 주고 받는 것이 일반적이다.
 

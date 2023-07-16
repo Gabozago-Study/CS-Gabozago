@@ -145,6 +145,8 @@ CORS
 * '교차 출처 리소스 공유'
 * HTTP 헤더를 사용하여 한 출처(origin)에서 실행중인 웹 어플리케이션이 다른 출처(cross-origin)의 선택한 자원에 접근할 수 있는 권한을 부여하도록 브라우저에 알려주는 정책
 
+> Origin : Protocol + Host + Port
+
 CORS 해결 in SpringBoot
 1. javax.servlet.Filters 사용하여 필터링하기
 2. @CrossOrigin 어노테이션 사용 (클래스, 메서드 단위 설정)

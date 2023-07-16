@@ -10,12 +10,16 @@
 
 ### 프로세스 vs 스레드
 #
+<img src="https://gmlwjd9405.github.io/images/os-process-and-thread/process.png" alt="process" width="100%">
+<img src="https://gmlwjd9405.github.io/images/os-process-and-thread/thread.png" alt="process" width="100%">
+
 프로세스
 * 실행중인 프로그램으로 OS로부터 주소 공간, 파일, 메모리 등을 할당받아 실행, 코드/데이터/스택/힙 메모리 영역을 가짐
 
 스레드
 * 프로세스의 독립적인 실행 단위로 프로세스로부터 자원을 할당받아 실행, 프로세스의 코드/데이터/힙 메모리 영역을 공유하고 개별적인 스택을 가짐
-  
+* cf. Java-Thread: JVM에 의해 스케쥴되는 실행 단위 코드 블럭
+
 > 스레드가 개별적인 스택을 가지는 이유?
 > * 스택에는 함수 호출 시의 전달인자, 지역 변수, 되돌아갈 주소 등을 저장
 > * 독립적인 스택을 갖는 것은 독립적인 함수 호출이 가능하고 독립적인 실행 흐름을 추가할 수 있다는 것을 의미
@@ -146,37 +150,6 @@
 
 <br>
 
-### CPU 스케줄러
-#
-장기스케줄러(Long-term scheduler or job scheduler)
-* 메모리와 디스크 사이의 스케줄링을 담당.
-* 프로세스에 memory(및 각종 리소스)를 할당(admit)
-* degree of Multiprogramming 제어
-(실행중인 프로세스의 수 제어)
-* 프로세스의 상태
-  * new -> ready(in memory)
-
-
-단기스케줄러(Short-term scheduler or CPU scheduler)
-* CPU 와 메모리 사이의 스케줄링을 담당.
-* Ready Queue 에 존재하는 프로세스 중 어떤 프로세스를 running 시킬지 결정.
-* 프로세스에 CPU 를 할당(scheduler dispatch)
-* 프로세스의 상태
-  * ready -> running -> waiting -> ready
-
-중기스케줄러(Medium-term scheduler or Swapper)
-* 여유 공간 마련을 위해 프로세스를 메모리에서 디스크로 쫓아냄 (swapping)
-* 프로세스에게서 memory 를 deallocate(할당 해제)
-* degree of Multiprogramming 제어
-* 현 시스템에서 메모리에 너무 많은 프로그램이 동시에 올라가는 것을 조절하는 스케줄러
-* 프로세스의 상태
-  * ready -> suspended
-
-> 스와핑(swapping): 메모리의 관리를 위해 사용되는 기법. 표준 Swapping 방식으로는 round-robin 과 같은 스케줄링의 다중 프로그래밍 환경에서 CPU 할당 시간이 끝난 프로세스의 메모리를 보조 기억장치(e.g. 하드디스크)로 내보내고 다른 프로세스의 메모리를 불러 들일 수 있다.
-
-<br>
-
-
 ### 가상 메모리
 #
 프로세스 전체가 메모리 내에 올라오지 않더라도 실행이 가능하도록 하는 기법
@@ -213,5 +186,57 @@
 * 외부 단편화가 발생할 수 있음
 
 <br>
+<br>
 
+## 페이지 교체 알고리즘
+#
+<br>
+
+### FIFO 페이지 교체
+#
+가장 간단한 페이지 교체 알고리즘으로 FIFO(first-in first-out)의 흐름을 가진다.
+* 먼저 물리 메모리에 들어온 페이지 순서대로 페이지 교체 시점에 먼저 나가게 된다는 것이다.
+* 오래된 페이지가 항상 불필요하지 않은 정보를 포함하지 않을 수 있다(초기 변수 등)
+* 처음부터 활발하게 사용되는 페이지를 교체해서 페이지 부재율을 높이는 부작용을 초래할 수 있다.
+> Belady의 모순: 페이지를 저장할 수 있는 페이지 프레임의 갯수를 늘려도 되려 페이지 부재가 더 많이 발생하는 모순이 존재한다.
+
+<br>
+<br>
+
+
+### 최적 페이지 교체(Optimal Page Replacement)
+#
+가장 오랫동안 사용되지 않을 페이지를 찾아 교체하는 것이다.
+* 주로 비교 연구 목적을 위해 사용한다.
+* 알고리즘 중 가장 낮은 페이지 부재율을 보장한다.
+* 구현의 어려움이 있다. 모든 프로세스의 메모리 참조의 계획을 미리 파악할 방법이 없기 때문이다.
+  
+<br>
+<br>
+
+
+### LRU 페이지 교체(LRU Page Replacement)
+#
+LRU: Least-Recently-Used
+* 최적 알고리즘의 근사 알고리즘으로, 가장 오랫동안 사용되지 않은 페이지를 선택하여 교체한다.
+
+<br>
+<br>
+
+
+### LFU 페이지 교체(LFU Page Replacement)
+#
+LFU: Least Frequently Used
+* 참조 횟수가 가장 적은 페이지를 교체하는 방법이다. 
+* 활발하게 사용되는 페이지는 참조 횟수가 많아질 거라는 가정에서 만들어진 알고리즘이다.
+* 어떤 프로세스가 특정 페이지를 집중적으로 사용하다, 다른 기능을 사용하게되면 더 이상 사용하지 않아도 계속 메모리에 머물게 되어 초기 가정에 어긋나는 시점이 발생할 수 있다
+
+<br>
+<br>
+
+
+### MFU 페이지 교체(MFU Page Replacement)
+#
+MFU: Most Frequently Used
+* 참조 회수가 가장 작은 페이지가 최근에 메모리에 올라왔고, 앞으로 계속 사용될 것이라는 가정에 기반한다.
 

@@ -1,4 +1,38 @@
-# CPU 스케줄링 알고리즘
+# CPU 스케줄러와 스케줄링 알고리즘
+
+
+### CPU 스케줄러
+#
+장기스케줄러(Long-term scheduler or job scheduler)
+* 메모리와 디스크 사이의 스케줄링을 담당.
+* 프로세스에 memory(및 각종 리소스)를 할당(admit)
+* degree of Multiprogramming 제어
+(실행중인 프로세스의 수 제어)
+* 프로세스의 상태
+  * new -> ready(in memory)
+
+
+단기스케줄러(Short-term scheduler or CPU scheduler)
+* CPU 와 메모리 사이의 스케줄링을 담당.
+* Ready Queue 에 존재하는 프로세스 중 어떤 프로세스를 running 시킬지 결정.
+* 프로세스에 CPU 를 할당(scheduler dispatch)
+* 프로세스의 상태
+  * ready -> running -> waiting -> ready
+
+중기스케줄러(Medium-term scheduler or Swapper)
+* 여유 공간 마련을 위해 프로세스를 메모리에서 디스크로 쫓아냄 (swapping)
+* 프로세스에게서 memory 를 deallocate(할당 해제)
+* degree of Multiprogramming 제어
+* 현 시스템에서 메모리에 너무 많은 프로그램이 동시에 올라가는 것을 조절하는 스케줄러
+* 프로세스의 상태
+  * ready -> suspended
+
+> 스와핑(swapping): 메모리의 관리를 위해 사용되는 기법. 표준 Swapping 방식으로는 round-robin 과 같은 스케줄링의 다중 프로그래밍 환경에서 CPU 할당 시간이 끝난 프로세스의 메모리를 보조 기억장치(e.g. 하드디스크)로 내보내고 다른 프로세스의 메모리를 불러 들일 수 있다.
+
+<br>
+
+## CPU 스케줄링 알고리즘
+#
 
 ### FCFS(First Come First Served)
 #

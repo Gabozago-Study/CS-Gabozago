@@ -31,7 +31,7 @@
 
 <br>
 
-## CPU 스케줄링 알고리즘
+### CPU 스케줄링 알고리즘
 #
 
 ### FCFS(First Come First Served)

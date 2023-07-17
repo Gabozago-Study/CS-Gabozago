@@ -185,8 +185,7 @@ ACK을 확인하지 않고도 보낼 수 있는 데이터 양인 CWND(Congestion
     - 세션 하이재킹: 훔친 세션 ID 쿠키를 이용해 요청을 보내면 서버는 올바른 사용자가 보낸 요청인지 알 수 없음
     - 예: 넷플릭스 디바이스 로그인 개수 제한
 
-<img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MjVfNDMg/MDAxNTU4Nzk1NjQ3Nzg5.cz-5fOL_RPyifrETlD_Go9cuUmyCl8Jrl01uY_T5PgUg.FE9xhe58eOPiC_ZUucbewNUHAf35kj9cjo3qStzO5msg.PNG.shino1025/asdasd.png?type=w800
-" alt="session" width="100%">
+<img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA1MjVfNDMg/MDAxNTU4Nzk1NjQ3Nzg5.cz-5fOL_RPyifrETlD_Go9cuUmyCl8Jrl01uY_T5PgUg.FE9xhe58eOPiC_ZUucbewNUHAf35kj9cjo3qStzO5msg.PNG.shino1025/asdasd.png?type=w800" alt="token" width="100%">
 
 - 토큰 기반 인증: Access Token을 발급해준 후 요청이 들어오면 검증만 해주면 되기 때문에 추가 저장소가 필요 없는 Stateless한 구조
     - 이미 발급된 토큰을 돌이킬 수 없으므로 유출 시, 토큰 만료전까지 피해가 계속 발생할 수 있음

@@ -10,6 +10,17 @@
     - 데이터 제어(DCL): 데이터 무결성(data integrity)을 지키도록 제어
 
 
+### RDBMS / NoSQL
+#
+- RDBMS: 
+    - 정해진 스키마에 따라 데이터를 저장하기 때문에 명확한 데이터 구조 보장
+    - 시스템이 커질 수록 쿼리가 복잡해지고 성능이 저하되며, Scale-out이 어려움
+- NoSQL:
+    - Key-Value 형태로 데이터를 자유롭게 관리할 수 있음
+    - 데이터 중복이 발생할 수 있음
+- 데이터가 자주 변경이 이루어지는 시스템에서는 RDBMS를, 막대한 데이터를 저장해야 해서 DB를 Scale-out 해야 되는 시스템에서는 NoSQL을 사용
+
+
 ### 데이터베이스 무결성
 #
 - 개체 무결성: PK는 NULL 값이나 중복된 값을 가질 수 없음
@@ -57,53 +68,29 @@
     - 테이블과 인덱스를 별도로 파티셔닝 할 수 없음
 
 
-### JDBC, ODBC 차이
+### JOIN
 #
-- JDBC
-    - Java가 Database를 사용할 수 있도록 연결
-    - 자바 어플리케이션의 요청을 각 DBMS가 이해할 수 있도록 변환
-- ODBC
-    - 언어에 상관없이 사용 가능
-    - 응용프로그램에서 데이터에 접근할 때 사용
+- 둘 이상의 테이블을 연결해서 데이터를 검색하는 방법
+- Inner Join: 조인 키 컬럼 값이 양쪽 테이블에 공통적으로 존재하는 데이터만 추출
+- Left Outer Join: Inner 조인값과 Left outer join 키워드 왼쪽에 명시된 테이블에만 존재하는 데이터를 추출
+- Full Outer Join: 조인 키 컬럼 값이 양쪽 테이블 데이터 집합에서 공통적으로 존재하는 데이터와 한쪽 테이블에만 존재하는 데이터도 모두 추출
 
 
-### DELETE, TRUNCATE, DROP의 차이
-#
-- DELETE
-    - 데이터는 지우지만 테이블 용량은 줄어들지 않음
-    - 원하는 데이터만 골라서 지울 수 있음
-    - 삭제 후 되돌릴 수 있음
-- TRUNCATE
-    - 전체 데이터를 한번에 삭제하는 방식
-    - 테이블 용량이 줄어들고 인덱스 등도 삭제
-    - 삭제 후 되돌릴 수 없음
-- DROP
-    - 테이블 자체를 완전히 삭제하는 방식
-    - 삭제 후 되돌릴 수 없음
-
-
-### SELECT 쿼리의 수행 순서
-#
-FROM > WHERE > GROUP BY > HAVING > SELECT > ORDER BY
-
-
-### WHERE과 HAVING의 차이
-#
-- where: 그룹화 또는 집계가 발생하기 전 개별 행을 필터링하는데 사용
-- having: 그룹화 또는 집계가 발생한 후 그룹을 필터링하는데 사용
-
-
-### WHERE과 JOIN에서 ON의 차이
+### WHERE와 JOIN에서 ON의 차이
 #
 - WHERE: JOIN 결과를 WHERE 조건절로 필터링이 이뤄짐
 - ON: JOIN 대상이 ON 조건으로 필터링 됨
 
 
-### JOIN
+### WHERE와 HAVING의 차이
 #
-- Inner Join: 조인 키 컬럼 값이 양쪽 테이블에 공통적으로 존재하는 데이터만 추출
-- Left Outer Join: Inner 조인값과 Left outer join 키워드 왼쪽에 명시된 테이블에만 존재하는 데이터를 추출
-- Full Outer Join: 조인 키 컬럼 값이 양쪽 테이블 데이터 집합에서 공통적으로 존재하는 데이터와 한쪽 테이블에만 존재하는 데이터도 모두 추출
+- where: 그룹화 또는 집계가 발생하기 전 개별 행을 필터링하는데 사용
+- having: 그룹화 또는 집계가 발생한 후 그룹을 필터링하는데 사용
+
+
+### SELECT 쿼리의 수행 순서
+#
+FROM > WHERE > GROUP BY > HAVING > SELECT > ORDER BY
 
 
 ### View
@@ -182,15 +169,29 @@ FROM > WHERE > GROUP BY > HAVING > SELECT > ORDER BY
     - Rollback: TRANSACTION(INSERT, UPDATE, DELETE)작업 내용을 취소
 
 
-### RDBMS / NoSQL
+### JDBC, ODBC 차이
 #
-- RDBMS: 
-    - 정해진 스키마에 따라 데이터를 저장하기 때문에 명확한 데이터 구조 보장
-    - 시스템이 커질 수록 쿼리가 복잡해지고 성능이 저하되며, Scale-out이 어려움
-- NoSQL:
-    - Key-Value 형태로 데이터를 자유롭게 관리할 수 있음
-    - 데이터 중복이 발생할 수 있음
-- 데이터가 자주 변경이 이루어지는 시스템에서는 RDBMS를, 막대한 데이터를 저장해야 해서 DB를 Scale-out 해야 되는 시스템에서는 NoSQL을 사용
+- JDBC
+    - Java가 Database를 사용할 수 있도록 연결
+    - 자바 어플리케이션의 요청을 각 DBMS가 이해할 수 있도록 변환
+- ODBC
+    - 언어에 상관없이 사용 가능
+    - 응용프로그램에서 데이터에 접근할 때 사용
+
+
+### DELETE, TRUNCATE, DROP의 차이
+#
+- DELETE
+    - 데이터는 지우지만 테이블 용량은 줄어들지 않음
+    - 원하는 데이터만 골라서 지울 수 있음
+    - 삭제 후 되돌릴 수 있음
+- TRUNCATE
+    - 전체 데이터를 한번에 삭제하는 방식
+    - 테이블 용량이 줄어들고 인덱스 등도 삭제
+    - 삭제 후 되돌릴 수 없음
+- DROP
+    - 테이블 자체를 완전히 삭제하는 방식
+    - 삭제 후 되돌릴 수 없음
 
 
 ### SQL Injection

@@ -163,7 +163,7 @@ N:M 관계 (다대다)
   * Select에 의해 설정
   * 리소스를 다른 사용자가 동시에 읽을 수 있게 하되 변경은 불가능하다. 
   * 여러 공유락이 동시에 적용될 수 있다.
-* 베타락(Exclusive Lock)(=Write Lock): 
+* 배타락(Exclusive Lock)(=Write Lock): 
   * 데이터를 변경할 때 사용하는 Lock
   * 하나의 트랜잭션이 완료될때까지 유지되며, 베타락이 끝날때까지 어떠한 접근도 허용되지 않는다.
   * INSERT, UPDATE, DELETE에 의해 설정

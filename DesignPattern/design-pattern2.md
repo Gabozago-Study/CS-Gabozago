@@ -25,8 +25,7 @@
 ### MVC 패턴
  #
  <br>
-![ModelViewControllerDiagram](https://github.com/Gabozago-Study/CS-Gabozago/assets/100250055/652ddb16-c1b4-4e59-8e62-c7053a41ad74)
-
+<img src="https://github.com/Gabozago-Study/CS-Gabozago/assets/100250055/652ddb16-c1b4-4e59-8e62-c7053a41ad74" alt="ModelViewControllerDiagram">
  <br>
 
  * 웹 개발에서는 MVC 패턴을 사용하여 데이터베이스에 접근하는 모델, 웹 페이지를 표시하는 뷰, 사용자의 입력을 처리하는 컨트롤러로 애플리케이션을 구성

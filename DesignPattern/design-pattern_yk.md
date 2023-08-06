@@ -329,7 +329,9 @@ public class SamyangRamyun extends Ramyun {
 
 ## MVC 패턴
  Model, View, Controller의 약자로, 하나의 애플리케이션, 프로젝트를 구성할 때 그 구성요소를 세가지의 역할로 구분한 패턴
-
+ <br>
+![ModelViewControllerDiagram](https://github.com/Gabozago-Study/CS-Gabozago/assets/100250055/377a1dd0-b600-46ef-9aa7-7e0da88d06f4)
+ <br>
 
 Model
 * 데이터를 가진 객체
@@ -337,7 +339,6 @@ Model
 * 뷰나 컨트롤러에 대해서 어떤 정보도 알지 말아야 함
 * 재사용가능해야 하며 다른 인터페이스에서도 변하지 않아야 함
 * 변경이 일어나면, 변경 통지에 대한 처리방법을 구현해야 함
-![ModelViewControllerDiagram](https://github.com/Gabozago-Study/CS-Gabozago/assets/100250055/377a1dd0-b600-46ef-9aa7-7e0da88d06f4)
 
 
 View

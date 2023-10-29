@@ -89,7 +89,7 @@ VO(Value Object)
 * 변하지 않는 데이터 객체, 오직 read만 가능하며 getter만 사용
 
 ### Annotation
-* Java 소스 코드에 추가하여 사용할 수 있는 메타데이터의 일종으로 클래스와 메서드에 추가하여 다양한 기능을 부여하는 역활
+* Java 소스 코드에 추가하여 사용할 수 있는 메타데이터의 일종으로 클래스와 메서드에 추가하여 다양한 기능을 부여하는 역할
 * Annotation의 사용은 코드의 생산성을 증가시키고 코드량을 감소시키며 유지보수에 용이
 * @RequestBody, @RequestParam, @ModelAttribute, @Bean, @Component ...
 
